@@ -1,5 +1,5 @@
 group 'org.ethereum'
-version '0.4.2'
+version '0.4.3'
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
