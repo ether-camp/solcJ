@@ -2,6 +2,20 @@
 Solidity compiler binaries, packed into jar for use in ethereumJ
 
 -----
+0.4.3
+
+#### Linux
+https://github.com/rainbeam/solidity-static/
+
+#### Win
+Follow wiki
+
+#### Mac
+
+Follow wiki
+
+-----
+
 0.4.2
 
 #### Linux
@@ -16,4 +30,5 @@ brew install cpp-ethereum
 brew linkapps cpp-ethereum
 which solc
 ```
+
 -----
