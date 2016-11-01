@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class LibraryTest {
 
     @Test
-    public void testSomeLibraryMethod() throws IOException {
+    public void testSomeLibraryMethod() throws IOException, InterruptedException {
         List<String> commandParts = new ArrayList<String>();
         commandParts.add(getExecutable().getCanonicalPath());
         commandParts.add("--version");
@@ -33,14 +33,9 @@ public class LibraryTest {
         }
 
         //Wait to get exit value
-        try {
-            int exitValue = process.waitFor();
-            boolean success = exitValue == 0;
-            System.out.println("\n\nExecution success: " + success);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        int exitValue = process.waitFor();
+        boolean success = exitValue == 0;
+        System.out.println("\n\nExecution success: " + success);
 
     }
 
