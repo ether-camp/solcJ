@@ -1,5 +1,5 @@
 group 'org.ethereum'
-version '0.4.3'
+version '0.4.4'
 
 
 buildscript {
@@ -34,7 +34,7 @@ bintray {
         labels = ['Solidity']
         publicDownloadNumbers = true
         version {
-            name = '0.4.3'
+            name = project.version
             desc = ''
         }
     }
@@ -45,6 +45,5 @@ repositories {
 }
 
 dependencies {
-
 
 }

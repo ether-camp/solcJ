@@ -2,3 +2,4 @@
 .idea
 build
 access.info
+/scripts/linux/solc
