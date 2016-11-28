@@ -8,7 +8,7 @@ RUN sed -i -E -e 's/include <sys\/poll.h>/include <poll.h>/' /usr/include/boost/
 WORKDIR /src
 
 RUN git clone https://github.com/open-source-parsers/jsoncpp.git
-RUN git clone https://github.com/ethereum/solidity
+RUN git clone --recursive https://github.com/ethereum/solidity
 
 # alpine has jsoncpp-dev, but it doesn't provide static libs
 RUN cd jsoncpp \
@@ -19,7 +19,7 @@ RUN cd jsoncpp \
 WORKDIR /src/solidity/build
 
 RUN git pull
-RUN git checkout v0.4.4
+RUN git checkout v0.4.6
 
 # don't use nightly versioning for releases
 RUN echo -n > ../prerelease.txt
