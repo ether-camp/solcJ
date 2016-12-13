@@ -3,3 +3,4 @@
 build
 access.info
 /scripts/linux/solc
+.gradle
