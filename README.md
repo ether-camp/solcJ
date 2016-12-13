@@ -23,6 +23,9 @@ git checkout tags/v${VERSION}
 mkdir build
 cd build
 cmake .. && make
+
+# TODO put description how to apply dylib magic with `python scripts/fix_homebrew_paths_in_standalone_zip.py`
+
 cp -f solc/solc ${DEST}/src/main/resources/native/mac/solc/solc
 
 #${DEST}/src/main/resources/native/mac/solc/solc --version
