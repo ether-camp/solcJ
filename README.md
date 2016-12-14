@@ -24,9 +24,18 @@ mkdir build
 cd build
 cmake .. && make
 
-# TODO put description how to apply dylib magic with `python scripts/fix_homebrew_paths_in_standalone_zip.py`
+# Here we fixing links to dynamic libraries inside binaries
+# Magic with `otool` and `install_name_tool`
+mkdir solc/link
+cp solc/solc solc/link/
+cp solc/libsoljson.dylib solc/link/
+cp libevmasm/libsolevmasm.dylib solc/link
+cp libdevcore/libsoldevcore.dylib solc/link
+cp libevmasm/libsolevmasm.dylib solc/link
+cp libsolidity/libsolidity.dylib solc/link
+python ../scripts/fix_homebrew_paths_in_standalone_zip.py solc/link
 
-cp -f solc/solc ${DEST}/src/main/resources/native/mac/solc/solc
+cp -fR solc/link/* ${DEST}/src/main/resources/native/mac/solc/
 
 #${DEST}/src/main/resources/native/mac/solc/solc --version
 ```
