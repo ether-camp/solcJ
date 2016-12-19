@@ -5,5 +5,5 @@ package org.ethereum.solcJ;
  */
 public class SolcVersion {
 
-    public static final String VERSION = "0.4.6";
+    public static final String VERSION = "0.4.7";
 }
