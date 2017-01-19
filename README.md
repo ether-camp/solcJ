@@ -1,6 +1,79 @@
 # solcJ
 Solidity compiler binaries, packed into jar for use in ethereumJ
 
+
+-----
+0.4.8
+#### Mac
+
+Navigate to solcJ dir, then:
+
+```
+export DEST=`pwd`
+cd ..
+mkdir -p solidity-builds
+cd solidity-builds
+export DIR=`pwd`
+export VERSION="0.4.8"
+git clone --recursive https://github.com/ethereum/solidity.git ${DIR}/solidity-${VERSION}
+cd ${DIR}/solidity-${VERSION}
+git checkout tags/v${VERSION}
+
+# commebnt brew upgrade to speedup
+./scripts/install_deps.sh
+mkdir build
+cd build
+cmake .. && make
+
+# Here we fixing links to dynamic libraries inside binaries
+# Magic with `otool` and `install_name_tool`
+mkdir solc/link
+cp solc/solc solc/link/
+cp solc/libsoljson.dylib solc/link/
+cp libevmasm/libsolevmasm.dylib solc/link
+cp libdevcore/libsoldevcore.dylib solc/link
+cp libevmasm/libsolevmasm.dylib solc/link
+cp libsolidity/libsolidity.dylib solc/link
+python ../scripts/fix_homebrew_paths_in_standalone_zip.py solc/link
+
+cp -fR solc/link/* ${DEST}/src/main/resources/native/mac/solc/
+
+#${DEST}/src/main/resources/native/mac/solc/solc --version
+```
+
+#### Linux
+
+Navigate to solcJ dir, then:
+```
+export DEST=`pwd`
+cd scripts/linux
+```
+Open file `Dockerfile` and change version to checkout
+Run docker service
+Remove prev image
+```
+cp -f solc ${DEST}/src/main/resources/native/linux/solc/solc
+
+```
+
+#### Windows
+
+Change version in `scripts/win/run.bat`
+Navigate to solcJ dir, then:
+```
+scripts/win/run.bat
+
+```
+
+Grab result from `build\solc\Release\solc.exe` 
+
+
+#### Final
+ * Copy all binaries to solcJ project
+ * Update hardcoded version in `SolcVersion.java` class and in `build.gradle`
+ * Publish to bintray with: `./gradlew clean jar bintrayUpload -DbintrayUser=XXXX -DbintrayApiKey=YYYY`
+
+
 -----
 0.4.7
 #### Mac
