@@ -1,6 +1,8 @@
 # solcJ
-Solidity compiler binaries, packed into jar for use in ethereumJ
+Solidity compiler binaries, packed into jar for use in Java based projects.
 
+
+---
 
 Jars are available at:
 https://bintray.com/ethereum/maven/org.ethereum.solcJ-all/
