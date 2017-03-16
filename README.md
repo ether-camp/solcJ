@@ -12,7 +12,7 @@ Can be included in gradle via:
 compile 'org.ethereum:solcJ-all:0.4.8'
 ```
 
-We user jar in EthereumJ project, where we add addition layer of classes to interact with `solc`:
+We use jar in EthereumJ project, where we add addition layer of classes to interact with `solc`:
 
 https://github.com/ethereum/ethereumj/tree/develop/ethereumj-core/src/main/java/org/ethereum/solidity/compiler
 
