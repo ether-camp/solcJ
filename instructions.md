@@ -1,4 +1,62 @@
 -----
+0.4.18
+#### Note
+No way to generate the Mac binary
+
+#### Mac
+
+Navigate to solcJ dir, then:
+
+```
+export DEST=`pwd`
+cd ..
+mkdir -p solidity-builds
+cd solidity-builds
+export DIR=`pwd`
+export VERSION="0.4.18"
+git clone --recursive https://github.com/ethereum/solidity.git ${DIR}/solidity-${VERSION}
+cd ${DIR}/solidity-${VERSION}
+git checkout tags/v${VERSION}
+
+# comment brew upgrade to speedup
+./scripts/install_deps.sh
+mkdir build
+cd build
+cmake .. && make
+
+# Here we fixing links to dynamic libraries inside binaries
+# Magic with `otool` and `install_name_tool`
+mkdir solc/link
+cp solc/solc solc/link/
+cp solc/libsoljson.dylib solc/link/
+cp libevmasm/libsolevmasm.dylib solc/link
+cp libdevcore/libsoldevcore.dylib solc/link
+cp libevmasm/libsolevmasm.dylib solc/link
+cp libsolidity/libsolidity.dylib solc/link
+python ../scripts/fix_homebrew_paths_in_standalone_zip.py solc/link
+
+cp -fR solc/link/* ${DEST}/src/main/resources/native/mac/solc/
+
+#${DEST}/src/main/resources/native/mac/solc/solc --version
+```
+
+#### Linux
+
+Take from https://github.com/rainbreak/solidity-static/releases
+
+#### Windows
+
+Take from https://github.com/ethereum/solidity/releases
+
+
+#### Final
+ * Copy all binaries to solcJ project
+ * Update hardcoded version in `SolcVersion.java` class and in `build.gradle`
+ * Publish to bintray with: `./gradlew clean jar bintrayUpload -DbintrayUser=XXXX -DbintrayApiKey=YYYY`
+
+
+
+-----
 0.4.10
 #### Mac
 
