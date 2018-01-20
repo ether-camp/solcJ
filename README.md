@@ -9,7 +9,7 @@ https://bintray.com/ethereum/maven/org.ethereum.solcJ-all/
 
 Can be included in gradle via:
 ```
-compile 'org.ethereum:solcJ-all:0.4.8'
+compile 'org.ethereum:solcJ-all:0.4.19'
 ```
 
 We use jar in EthereumJ project, where we add addition layer of classes to interact with `solc`:
@@ -20,7 +20,7 @@ And then we use code snippet for compilation:
 
 ```
 String contractSrc =
-    "pragma solidity ^0.4.7;\n" +
+    "pragma solidity ^0.4.19;\n" +
             "contract a {" +
             "        function() {throw;}" +
             "}";
