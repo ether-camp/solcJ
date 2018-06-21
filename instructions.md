@@ -2,39 +2,15 @@
 0.4.24
 #### Mac
 
-Navigate to solcJ dir, then:
+Follow this [guide](https://solidity.readthedocs.io/en/latest/installing-solidity.html#binary-packages)):
 
 ```
-export DEST=`pwd`
-cd ..
-mkdir -p solidity-builds
-cd solidity-builds
-export DIR=`pwd`
-export VERSION="0.4.24"
-git clone --recursive https://github.com/ethereum/solidity.git ${DIR}/solidity-${VERSION}
-cd ${DIR}/solidity-${VERSION}
-git checkout tags/v${VERSION}
+brew update
+brew upgrade
+brew tap ethereum/ethereum
+brew install solidity
 
-# commebnt brew upgrade to speedup
-./scripts/install_deps.sh
-mkdir build
-cd build
-cmake .. && make
-
-# Here we fixing links to dynamic libraries inside binaries
-# Magic with `otool` and `install_name_tool`
-mkdir solc/link
-cp solc/solc solc/link/
-cp solc/libsoljson.dylib solc/link/
-cp libevmasm/libsolevmasm.dylib solc/link
-cp libdevcore/libsoldevcore.dylib solc/link
-cp libevmasm/libsolevmasm.dylib solc/link
-cp libsolidity/libsolidity.dylib solc/link
-python ../scripts/fix_homebrew_paths_in_standalone_zip.py solc/link
-
-cp -fR solc/link/* ${DEST}/src/main/resources/native/mac/solc/
-
-#${DEST}/src/main/resources/native/mac/solc/solc --version
+# then copy the library to ${DEST}/src/main/resources/native/mac/solc/solc
 ```
 
 #### Linux
