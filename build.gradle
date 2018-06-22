@@ -1,20 +1,13 @@
-group 'org.ethereum'
-version '0.4.23'
-
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
-    }
+plugins {
+    id 'java'
+    id 'maven'
+    id 'maven-publish'
+    id 'com.jfrog.bintray' version '1.7'
+    id "de.undercouch.download" version "3.4.3"
 }
 
-apply plugin: 'java'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
+group 'org.ethereum'
+version '0.4.24'
 
 bintray {
     user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.properties['bintrayUser']
@@ -55,3 +48,27 @@ test {
         println "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
     }
 }
+
+task downloadStaticLinuxFile(type: Download) {
+    src "https://github.com/ethereum/solidity/releases/download/v${version}/solc-static-linux"
+    dest "${projectDir}/src/main/resources/native/linux/solc/solc"
+}
+
+task downloadWindowsZipFile(type: Download) {
+    src "https://github.com/ethereum/solidity/releases/download/v${version}/solidity-windows.zip"
+    dest new File("${buildDir}/tmp", 'solidity-windows.zip')
+}
+
+task unzipFile(dependsOn: downloadWindowsZipFile, type: Copy) {
+    from zipTree(downloadWindowsZipFile.dest)
+    into "${projectDir}/src/main/resources/native/win/solc"
+}
+
+task cleanUpFiles(dependsOn: unzipFile, type: Delete) {
+    delete "${projectDir}/src/main/resources/native/win/solc/soltest.exe"
+}
+
+assemble.dependsOn downloadStaticLinuxFile
+assemble.dependsOn cleanUpFiles
+
+

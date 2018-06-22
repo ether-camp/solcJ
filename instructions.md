@@ -1,4 +1,36 @@
 -----
+0.4.24
+#### Mac
+
+Follow this [guide](https://solidity.readthedocs.io/en/latest/installing-solidity.html#binary-packages)):
+
+```
+brew update
+brew upgrade
+brew tap ethereum/ethereum
+brew install solidity
+
+# then copy the library to ${DEST}/src/main/resources/native/mac/solc/solc
+```
+
+#### Linux
+
+Take binaries from https://github.com/ethereum/solidity/releases
+
+#### Windows
+
+Take binaries from https://github.com/ethereum/solidity/releases
+
+
+#### Final
+ * Copy all binaries to solcJ project
+ * Update hardcoded version in `SolcVersion.java` class and in `build.gradle`
+ * Publish to bintray with: `./gradlew clean jar bintrayUpload -DbintrayUser=XXXX -DbintrayApiKey=YYYY`
+
+Scripts for compiling the binaries are provided in the scripts directory. Those are left as an alternative to compile the binaries.
+
+
+-----
 0.4.23
 #### Mac
 

@@ -19,14 +19,14 @@ RUN cd jsoncpp \
 WORKDIR /src/solidity/build
 
 RUN git pull
-RUN git checkout v0.4.23
+RUN git checkout v0.4.24
 
 # don't use nightly versioning for releases
 RUN echo -n > ../prerelease.txt
 
 RUN cmake -DCMAKE_BUILD_TYPE=Release \
           -DTESTS=1 \
-          -DSTATIC_LINKING=1 \
+          -DSOLC_LINK_STATIC=ON \
           ..
 
 RUN make --jobs=2 solc soltest
