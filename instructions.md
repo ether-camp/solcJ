@@ -27,7 +27,7 @@ Take binaries from https://github.com/ethereum/solidity/releases
  * Update hardcoded version in `SolcVersion.java` class and in `build.gradle`
  * Publish to bintray with: `./gradlew clean jar bintrayUpload -DbintrayUser=XXXX -DbintrayApiKey=YYYY`
 
-Scripts for compiling the binaries are provided in the scripts directory. Those are left for historic reasons.
+Scripts for compiling the binaries are provided in the scripts directory. Those are left as an alternative to compile the binaries.
 
 
 -----
