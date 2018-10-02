@@ -2,12 +2,12 @@ plugins {
     id 'java'
     id 'maven'
     id 'maven-publish'
-    id 'com.jfrog.bintray' version '1.7'
-    id "de.undercouch.download" version "3.4.3"
+    id 'com.jfrog.bintray' version '1.8.4'
+    id 'de.undercouch.download' version '3.4.3'
 }
 
 group 'org.ethereum'
-version '0.4.24'
+version '0.4.25'
 
 bintray {
     user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.properties['bintrayUser']

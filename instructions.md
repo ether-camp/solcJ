@@ -1,5 +1,5 @@
 -----
-0.4.24
+0.4.25
 #### Mac
 
 Follow this [guide](https://solidity.readthedocs.io/en/latest/installing-solidity.html#binary-packages)):
