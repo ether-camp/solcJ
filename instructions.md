@@ -1,4 +1,50 @@
 -----
+0.5.1
+#### Mac
+
+```
+#get all dependencies
+brew update
+brew upgrade
+brew tap ethereum/ethereum
+brew install solidity
+#with z3 we need to ship the library, so we compile without it
+brew uninstall --ignore-dependencies z3
+
+#compile from github
+VERSION=0.5.1
+git clone --recursive https://github.com/ethereum/solidity.git
+cd solidity
+git checkout tags/v${VERSION}
+mkdir build
+cd build
+echo -n > ../prerelease.txt
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+```
+
+The binary is stored in target/solc
+
+#### Linux
+
+Take binaries from https://github.com/ethereum/solidity/releases
+
+#### Windows
+
+Take binaries from https://github.com/ethereum/solidity/releases
+
+
+#### Final
+ * Copy all binaries to solcJ project
+ * Update hardcoded version in `SolcVersion.java` class and in `build.gradle`
+ * Publish to bintray with: `./gradlew clean jar bintrayUpload -DbintrayUser=XXXX -DbintrayApiKey=YYYY`
+
+Scripts for compiling the binaries are provided in the scripts directory. Those are left as an alternative to compile the binaries.
+
+
+
+
+-----
 0.4.25
 #### Mac
 
