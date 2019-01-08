@@ -1,5 +1,5 @@
 -----
-0.5.1
+0.5.2
 #### Mac
 
 ```
@@ -12,7 +12,7 @@ brew install solidity
 brew uninstall --ignore-dependencies z3
 
 #compile from github
-VERSION=0.5.1
+VERSION=0.5.2
 git clone --recursive https://github.com/ethereum/solidity.git
 cd solidity
 git checkout tags/v${VERSION}

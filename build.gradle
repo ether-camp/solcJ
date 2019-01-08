@@ -7,7 +7,7 @@ plugins {
 }
 
 group 'org.ethereum'
-version '0.5.1'
+version '0.5.2'
 
 bintray {
     user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.properties['bintrayUser']
@@ -70,5 +70,4 @@ task cleanUpFiles(dependsOn: unzipFile, type: Delete) {
 
 assemble.dependsOn downloadStaticLinuxFile
 assemble.dependsOn cleanUpFiles
-
 
