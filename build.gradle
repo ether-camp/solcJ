@@ -7,7 +7,7 @@ plugins {
 }
 
 group 'org.ethereum'
-version '0.5.6'
+version '0.5.7'
 
 bintray {
     user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.properties['bintrayUser']
