@@ -1,5 +1,5 @@
 set "DEST=%cd%"
-set VERSION="0.5.6"
+set VERSION="0.5.7"
 cd ..
 mkdir solidity-builds
 cd solidity-builds
