@@ -1,6 +1,8 @@
 # solcJ
 Solidity compiler binaries, packed into jar for use in Java based projects.
 
+## :no_entry: Deprecated :no_entry:
+This project is not supported anymore. If you have any question or would like to contribute find us on [Gitter](https://gitter.im/ethereum/ethereumj).
 
 ---
 
